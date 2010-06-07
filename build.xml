@@ -1,5 +1,15 @@
 <project name="tspGenetics" default="all" basedir=".">
 
-<target name="all" />
+  <target name="all" depends="compile" />
+
+  <target name="clean">
+    <delete dir="build" />
+  </target>
+
+  <target name="compile">
+    <mkdir dir="build/classes" />
+    <echo>Compiling...</echo>
+    <javac srcdir="src" destdir="build/classes" />
+  </target>
 
 </project>
