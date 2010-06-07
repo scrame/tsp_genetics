@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Genetic Algortihms in an Accessible Context</TITLE>
+<META NAME="doccomm" CONTENT="ALT-F11 says it's groovie!">
+<META NAME="Template" CONTENT="C:\Program Files\MSOffice\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT SIZE=4><P>Section 1: The Basics</P>
+</B></FONT><P>Genetic Algorithms in an Accessible Context</P>
+<P>The purpose of this project is to make a program that allows a great amount of experimentation with genetic algorithms while being easy enough that someone with no formal training in mathematics or computer science would be able to use. Accessibility goes a long way in helping one to understand the mechanisms and the implications for the theory being modeled.</P>
+<P>The traveling sales(person) problem: an introduction</P>
+<P>Suppose you were a sales(person) and were given a territory to cover, say 50 cities. You, being a shrewd operator, would want a way to determine the shortest route between all 50 cities, without ever having to visit the same city twice. While a good guess could be made by connecting the dots intelligently, there is no formula for the best solution, and given that the problem size grows factorially (see below), there is little hope for random or brute-force methods past the most trivial numbers of cities.</P>
+<P>The definition of the problem:</P>
+<P>A path on the map that goes through each city is called a tour, since the tour goes through all of the cities, the length of the tour is the number of the cities being toured. Contained in the tour is a city number, which is nonrepeating and gets no higher than the number of cities. For example:</P>
+<P>0 1 2 3 4</P>
+<P>would represent a tour of 5 cities and the tour would start at city 0, and continue through city 4. Note that the city numbers have nothing to do with geographic location.</P>
+<P>Since each tour has n positions filled with nonrepeating ID’s ranging from 1 to n, then the number of possibilities can be represented with a factorial n!. In our example above, the string is just one of a possible 5! = 5*4*3*2*1 = 120 possibilities, while this seems trivial with only 5, once the number of cities gets into the double digits, the problem space becomes almost unmanageable, and random or brute force methods make very inefficient solutions. At this point there are several methods of finding good tours, the approach taken by this program is that of genetic algorithms.</P>
+<P>Genetic Algorithms: an introduction</P>
+<P>Genetic algorithms are so called because they simulate the recombination of genes in DNA through sexual reproduction, mutation, and to some extent, learning. The basic premise of genetic algorithms is this: create a pool of organisms, each containing a solution of the problem, randomly chosen, and some better than others. At this point, the algorithms are evaluated, and their fitness is determined in relation to the problem, and an average is calculated. All the organisms that are better than average are put into a second set, and then the breeding begins. At the breeding stage, the more fit algorithms are mutated and crossed with each other randomly, or by some other choice, and a new generation is created that is the size of the previous generation. The new generation then repeats the process of evaluation and breeding until the number of desired generations has passed. The best tour is preserved through generations.</P>
+<P>Premature Convergence: the need for mutation</P>
+<P>Often with genetic algorithms there is a point where a solution that is better than any other and quickly spreads through the gene pool, when this happens, the algorithm fails to make any great advancements, and each generation struggles. This can be circumvented in two ways. The first is to introduce another modifier, that simply alters the tour, when this is done, then a tour has a harder time propagating through the pool intact, and diversity is maintained. A second way is through resetting the genepool. When this is done, the group of organisms is repopulated mostly with random tours, but some individuals carry the best tour preserved. With this, a great deal of diversity is introduced into the gene pool, along with the more successful tours, this allows recombining to happen much more freely.</P>
+<B><FONT SIZE=4><P>Section 2: The Program</P>
+</B></FONT><P>The Map:</P>
+<P>The map is a simple matrix that only holds the coordinates of each city, and a metric (a mathematical rule for determining distance). Simple functions take a tour as input and calculates the length with respect to the metric. The map really only has three properties: width, height, and the number of cities. TspGenetics is able to save and load maps, even though currently it contains no pre-made maps.</P>
+<P>&nbsp;</P>
+<P>The Organism Templates</P>
+<P>TspGenetics allows you to put up to 8 different types of organisms in your gene pool. An organism simply contains a binary and a unary algorithm. While setting this (hit 'Configure' on the main panel), you can also set the number of each type of individual to be in the pool. See below for a brief discussion of the included algorithms.</P>
+<P>&nbsp;</P>
+<P>Binary vs. Unary Operators:</P>
+<P>Binary Operators represent sexual reproduction, they require two different sets of tours and create different tours depending on the order they are called in. Many binary operators also make random changes, so that results may differ to even with identical inputs.</P>
+<P>The Binary Algorithms:</P>
+<P>Binary Identity -- Makes no modification to the calling tour, useful for testing unary algorithms</P>
+<P>Order Crossover -- Uses a simple method of selecting two cut points, copying everything from the outer cuts of the first tour into the child, and everything form the middle slice into the same child without repeating, not an especially effective algorithm</P>
+<P>Edge Recombination -- Constructs an 'edge map' containing all the neighbors of both points represented in both tours, then constructs a new tour by randomly selecting a seed, then a neighbor from its edge map, then its neighbor, and so on.</P>
+<P>Matrix Union -- Uses a predecessor matrix to represent the tours to be modified and simply or's the two together, then analyzes the matrix according to the properties of a valid tour to create a new tour that contains the features of both parents.</P>
+<P>Matrix Intersection -- Identical to the Union operator, except that it performs a logical and.</P>
+<P>Matrix XOR -- Identical to the Union, but uses an exclusive union.</P>
+<P>Unary Operators represent mutation and learning. A Unary Operator only takes one tour and modifies it based on its internal structure, often randomly. This program uses guided mutation so that each time it is changed, it is checked to see if it is an improvement and only preserves the tour if it is. That is, if a tour were mutated 50 times and none of them were an improvement, then the operator would simply return the original tour.</P>
+<P>The Unary Algorithms:</P>
+<P>Unary Identity -- Makes no modification to the tour, useful for demonstrating binary algorithms.</P>
+<P>Splice -- Divides the tour into thirds, and then rearranges it. More specifically, if A,B,C are ordered thirds of the tour, then this returns ACB.</P>
+<P>Inversion -- Divides into thirds, but reverses the middle section.</P>
+<P>Random Splice -- Same as splice, but picks the cut points randomly.</P>
+<P>Random Inversion -- Same as inversion, but picks the cut points randomly.</P>
+<P>Random Swap -- Exchanges two elements of the tour.</P>
+<P>&nbsp;</P>
+<B><FONT SIZE=4><P>Section 3: The Future</P>
+</B></FONT><P>These Are features planned and even partially developed, but did not make it in to TspGenetics v1.0</P>
+<P>The Biological Simulation:<BR>
+<BR>
+The biological simulation has the program choose suitable parents based on fitness and proximity. The breeding radius is the determination of this proximity, if a neighbor is less than the breeding radius and a suitable partner, then it is crossed only once. This allows one to visualize the way the algorithms are spread and the relative success of each algorithm, as well as giving a less than random breeding methodology. This aspect of the problem was largely developed, but removed due to difficulties in the animation and time constraints. I consider this an acceptable deletion because it is not crucial to the program and was the last aspect of the program to be designed.</P>
+<P>The Dominance Type:</P>
+<P>There are two types of breeding available: dominant and cooperative. Dominant breeding means that the better-fit organism gives its operators to both of its children, while cooperative passes one operator of each parent to each child. This effects both the biological simulation and random breeding. This was removed during its implementation in part because the dominant type would tend to spread quickly if an organism with two identities and a fairly superior tour were implemented. It was also very closely tied in with the biological simulation and much harder to demonstrate its behavior without the graphical feedback.</P>
+<P>Editable Maps: </P>
+<P>Even though loading and saving maps is fully implemented, there is no simple way of defining your own map. Future versions of this program are likely to include a simple point and click editor, as well as some classic maps for this problem. Typically, preset maps come in several types:</P>
+<P>--Randomly dispersed cities (included)</P>
+<P>--Cities in a spiral</P>
+<P>--Cities set in clusters (to test micro topologies)</P>
+<P>Better Documentation:</P>
+<P>This document, although inclusive, is not extensively hyperlinked, nor is its target the potential consumer market. Any further revision would be likely to have images, more thorough explanations of the program, and lots of nice links.</P>
+<P>More and Better Algorithms:</P>
+<P>All of the algorithms implemented come from a single article: Genetic Operators for Sequencing Problems, by B.R. Fox and M.B. McMahon; even though this covers all of the algorithms tested in the article, there are a few that were described that were not tested in the article or implemented in this program. Additionally, the precedence matrix operations that fix an underconstrained matrix are not completely efficient, and can be somewhat destructive at times. Future versions would add new operators and help smooth over the matrix problems.</P>
+<P>Different Metrics:</P>
+<P>The distance between each city is measured using a standard Euclidean metric, however there are simple provisions to change the metric used on the map, and I would like to add these in to demonstrate that even though they measure differently, they should still agree on the best tour that arises from this program. This is just a throwback to topology, and is not especially relevant to the problem, but relates more to the implementation.</P>
+<B><FONT SIZE=4><P>Section 4: Reflections</P>
+</B></FONT><P>As this finally comes to an end, I find myself looking through my disheveled, beat up notebook. I am quite happy with how this program finally turned out, even though there were many times when I didn't think I would ever finish, let alone have a comment for every line of code or a separate window that can open HTML documents. The only thing that I find lacking is the follow-up/exit interviews with my faculty (student users offered very little input in the beginning and were noticeably impressed with the final version). However, the only requests that the faculty had were the following: include the problem statement, allow the user to modify as many aspects of the problem as possible, always make it clear that the program is doing something, allow maps to be saved and loaded as well as preserving maps from simulation to simulation (in the same session of the program) to make comparisons between different combinations of operators, and have a lot of graphical feedback. I feel that I have met each of these criteria quite adequately, and that a user with little exposure to this problem would be able to comprehend the results. I think the modifications from and features left out of the original design (see Section 3), are all quite modest and logical, as they were not key to making the program run, but simply extras to show more aspects of the problem.</P>
+<P>In summary, I am very happy with this as the initial release of this program, and can see myself keeping it as a side project for quite sometime.</P></BODY>
+</HTML>

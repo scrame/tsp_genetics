@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Sample Source Code from Liam Christopher</title>
+</head>
+<body style="background-color:#FFFFFF; color:#000000; ">
+<div style="width:600px; text-align:justify; ">
+<p>I apologize in advance for the awkward interface and default values. I wrote this to step you through the most basic operations of the program, but I have not changed anything since it was originally written. At the end of this document I briefly discuss the various problems with the program from the initial design to the final user experience. </p>
+<p>The first thing you need to do is rename 'tspGenetics.ba' to 'tspGenetics.bat'. If you are not on a windows system, you can run it from the command line:</p>
+<pre>java -cp tspGenetics.jar MainClass </pre>
+<p>On a windows system with Java installed, double clicking the
+  tspGenetics.bat file should start the program, opening the main window
+  (mainScreen.jpg):</p><br/>
+  <br/>
+  <img
+ src="images/mainScreen.JPG"
+ alt="TSP Genetics Main Control Window" /><br/>
+  <br/>
+  On my system this works with Java 1.4, but was initially written for
+  Java 1.2.<br/>
+  <br/>
+  Enter '10000' in the 'Number of Generations' box.<br/>
+  <br/>
+  Clicking the 'help' button will open a new window containing a text
+  file with a brief background of the problem and some of the underlying
+  theory. The 'map' button will give a few simple options relating to the
+  number of cities and the size (in pixels) of the map. The default is 30
+  cities, which has somewhere near 2.6525285981219105863630848e+32
+  possible solutions (according to my handy calculator), which is a
+  fairly large problem area. Unfortunately, there is no mathematical
+  formula to determine the optimal path through the cities.&nbsp; This
+  program uses genetic algorithms to determine which path is the best.<br/>
+  <br/>
+  Click 'configure'. The following window should appear (configure.jpg):<br/>
+  <br/>
+  <img
+ src="images/configure.JPG"
+ alt="TSP Genetics Configuration Panel" /><br/>
+  <br/>
+  Click the 'Unary Cycle' button until 'Random Splice' appears (I know,
+  its awkward), and then click 'Binary Cycle' until 'Edge Recombination'
+  appears. Click 'Set Types'. Note that the window will NOT close.<br/>
+  <br/>
+  In the main control panel, click 'GO!', the following window will
+  appear (progress.jpg):<br/>
+  <br/>
+  <img src="images/progress.JPG"
+ alt="TSPGenetics Data Generation Window" /><br/>
+  <br/>
+  <br/>
+  This is the main loop of the program. The progress bar displays the
+  percentage of the total generations that have been processed. The
+  underlying mechanics are beyond the scope of this document. It is not
+  necessary to let the process run completely, but the longer it runs,
+  the better the result. The Unary and Binary algorithms selected earlier
+  make an effective combination, and in my own runs, they almost always
+  provide the optimal solution within 10,000 generations (meaning less
+  than 2.4e+5 calculations, vs 2.6e+32 calculations required by brute
+  force). The tour lengths are measured with a simple Euclidean metric,
+  and represent the number of units (pixels) required to draw that tour.
+  The lower the number the better the result.<br/>
+  <br/>
+  The numbers are the average and best solutions for that generation<br/>
+  <br/>
+  Regardless of whether the loop reaches the end, or the user hits the
+  stop button, the following two windows will be opened (comparison.jpg
+  and bestTour.jpg):<br/>
+  <br/>
+  <img
+ src="images/comparison.JPG"
+ alt="TSPGenetics Average/Best Comparison" /><br/>
+  <br/>
+  <br/>
+  <img src="images/bestTour.JPG"
+ alt="TSPGenetics Best Tour Window" /><br/>
+  <br/>
+  The first window is a (unfortunately unlabeled) graph of the lengths of
+  the tours over each generation. When the algorithms used are effective,
+  the graph should be similar to this, and the average and best tours
+  should be tied closely together. Ineffective combinations will result
+  in either constant or random graphs. Generally, the upper bound on
+  these settings is around 5000 and the ideal is usually around 1200.<br/>
+  <br/>
+  The second window will display a brief animation of the best tour
+  through each generation. The best solution should trace an outline
+  around the cities and should not have any crossed lines. There is
+  currently no way to replay this animation. It might also be necessary
+  to resize the window to view the map properly.<br/>
+  <br/>
+  There are many algorithms and options that can be used, and despite the
+  rough user interface, this program gives a visual comparison of several
+  common types of genetic algorithms, and often subtle changes can
+  produce dramatically different results.<br/>
+  <br/>
+  The code itself is in the tspGeneticsSource folder.<br/>
+  <br/>
+  Please keep in mind that this code has been untouched for nearly&nbsp; five years, and there are quite a few details that I would do
+  differently now:<br/>
+  <ul>
+  <li>Replace 'Your Product Name' in the comments with TSPGenetics.</li>
+  <li> Clean up the user interface (obviously, drop down boxes should be
+  used instead of buttons, I still don't know why I did that).</li>
+  <li> Display the map and make it editable.</li>
+  <li> Add a button to replay the animation</li>
+  <li> Display the best tour progression as the data is generated instead
+  of afterwards.</li>
+  <li> Add labels and values to the graph.</li>
+  <li> The animation window size should be properly set.</li>
+  </ul>
+  <br/>
+  Additionally, there are a few extra features in the original design
+  that never made the final cut, and they can be found in the
+  'surgicallyRemoved' sub folder.<br/>
+  <br/>
+  Beyond this, there are a few serious code/design problems as well, the
+  following should be changed:<br/>
+  <ul>
+  <li> The program should be deployed with a platform-independent executeable JAR. </li>
+  <li> All of the code is currently in the default package. It should be in
+  its own package.</li>
+  <li> Similarly, functional groups should be placed into appropriate sub
+  packages, for example, the binary and unary operators should be in
+  separate folders -- during development, I used main() functions to test
+  each class. While effective, it makes maintenance confusing. Now, I
+  would use JUnit and create separate unit testing classes according to
+  the test first methodology.</li>
+  <li> The headers and comments are not Javadoc compliant. They were
+  generated from a template by an early version of JBuilder. The
+  flexibility of Java makes it easy to write self-documenting code, and
+  compliance with Sun's standards make it easy to create and maintain API
+  documentation.</li>
+  <li> Much of the design was ad-hoc. While I had a clear idea of the
+  program, and developed it through top down decomposition, I worked many
+  complicated and unnecessary features in the beginning, which were
+  ultimately removed, but cost me time which would have helped smooth
+  the&nbsp; interface problems.</li>
+  </ul>
+  <br/>
+  <br/>
+  The final project included a project notebook containing all of my
+  research and design notes, which included much more information about
+  the mathematics behind the algorithms and comparisons of internal
+  representations, as well as various other pieces of background image.
+  This notebook is (hopefully)&nbsp; in the computer science department
+  library at the University of Redlands, and was intended to be this
+  programs accompanying documentation, which is why the documents here
+  were so sparse (and necessitating this document).<br/>
+  <br/>
+  Finally, I would like to note a few of the actual implementation
+  details:<br/>
+  The map loading and saving used Java's Serializable interface; the GUI
+  is done with Java's swing lightweight component library; and the graph
+  and animation windows are independent threads created by implementing
+  the Runnable interface.<br/>
+  <br/>
+  Again, I apologize for the delay in sending this, but in reviewing the
+  layout, there were many glaring issues that I feel would create
+  unnecessary doubts of my competence based on mistakes made several
+  years ago. I hope you can overlook these issues as you examine the
+  code, as my methodologies have grown considerably.<br/>
+  <br/>
+  Thanks for your patience,<br/>
+  <br/>
+  Liam Christopher.<br/>
+  <br/>
+  <br/>
+
+
+</div>
+</body>
+</html>
