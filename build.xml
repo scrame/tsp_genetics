@@ -1,0 +1,5 @@
+<project name="tspGenetics" default="all" basedir=".">
+
+<target name="all" />
+
+</project>
