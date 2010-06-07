@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        Your Product Name
 //Version:
@@ -24,6 +26,9 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspOrganism;
 
 public class individualTypeFrame extends JFrame implements ActionListener
 {

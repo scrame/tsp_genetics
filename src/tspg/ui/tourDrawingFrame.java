@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        Your Product Name
 //Version:
@@ -18,6 +20,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspTour;
 
 public class tourDrawingFrame extends JFrame implements Runnable
 {

@@ -1,3 +1,7 @@
+package tspg;
+
+import tspg.ui.ControlFrame;
+
 
 //Title:        TSP Genetics
 //Version:

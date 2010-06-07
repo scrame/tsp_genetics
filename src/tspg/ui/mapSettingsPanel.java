@@ -1,3 +1,5 @@
+package tspg.ui;
+
 //Title:        TSP Genetics
 //Version:
 //Copyright:    Copyright (c) 1999
@@ -16,6 +18,8 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import tspg.core.SystemSettings;
 
 class mapSettingsPanel extends JPanel
 {

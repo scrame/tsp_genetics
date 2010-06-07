@@ -1,3 +1,5 @@
+package tspg.ui;
+
 //Title:        Your Product Name
 //Version:
 //Copyright:    Copyright (c) 1999

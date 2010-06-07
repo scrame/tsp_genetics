@@ -1,3 +1,5 @@
+package tspg.operators.unary;
+
 
 //Title:        Your Product Name
 //Version:
@@ -19,6 +21,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class unaryInversion extends UnaryOperator
 {
 

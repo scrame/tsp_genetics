@@ -1,3 +1,5 @@
+package tspg.operators.binary;
+
 /**
   TSP Genetics:
   this is the abstract class for a unary operator, ie an operator that works on
@@ -11,6 +13,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 
 abstract public class BinaryOperator {
 

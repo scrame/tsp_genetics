@@ -1,3 +1,5 @@
+package tspg.core;
+
 
 //Title:        Your Product Name
 //Version:
@@ -13,6 +15,9 @@
 
 */
 import java.io.Serializable;
+
+import tspg.metrics.AbstractMetric;
+import tspg.metrics.EuclideanMetric;
 public class TspMap implements Serializable
 {
 //default size of the map
@@ -31,7 +36,7 @@ public class TspMap implements Serializable
   public TspMap(int nCities)
   {
     numberOfCities = nCities;
-    mapMetric = new euclideanMetric();
+    mapMetric = new EuclideanMetric();
     initMap();
   }
 //same as above, but lets the metric be defined as well
@@ -54,7 +59,7 @@ public class TspMap implements Serializable
   public TspMap(int nCities, int newX, int newY)
   {
        numberOfCities = nCities;
-       mapMetric = new euclideanMetric();
+       mapMetric = new EuclideanMetric();
        mapX = newX;
        mapY = newY;
        makeRandomMap();

@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        TSP Genetics
 //Version:
@@ -28,6 +30,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspMap;
 
 public class mapFileButtonPanel extends JPanel implements ActionListener
 {

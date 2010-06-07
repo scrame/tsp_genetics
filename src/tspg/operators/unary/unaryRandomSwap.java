@@ -1,9 +1,13 @@
+package tspg.operators.unary;
+
 /**
     RandomSplice -- 
 */
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class unaryRandomSwap extends UnaryOperator
 {
 

@@ -1,3 +1,5 @@
+package tspg.operators.binary;
+
 //Title:        Your Product Name
 //Version:
 //Copyright:    Copyright (c) 1999
@@ -15,6 +17,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class binaryUnion extends BinaryOperator
 {
 //data for constructing a new tour

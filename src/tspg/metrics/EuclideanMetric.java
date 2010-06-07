@@ -1,3 +1,7 @@
+package tspg.metrics;
+
+import tspg.core.TspCity;
+
 
 //Title:        Your Product Name
 //Version:      
@@ -12,7 +16,7 @@
 
 */
 
-public class euclideanMetric extends AbstractMetric
+public class EuclideanMetric extends AbstractMetric
 {
 //sets the properties of this metric
   final static String metricName = "euclidean";
@@ -26,7 +30,7 @@ public class euclideanMetric extends AbstractMetric
     return (Math.sqrt((xVal2+yVal2)));
   }
 //constructor
-  public euclideanMetric()
+  public EuclideanMetric()
   {
   }
 }

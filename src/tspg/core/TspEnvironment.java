@@ -1,3 +1,5 @@
+package tspg.core;
+
 //Title:        Your Product Name
 //Version:
 //Copyright:    Copyright (c) 1999
@@ -34,6 +36,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+
+import tspg.ui.fitnessDrawingFrame;
+import tspg.ui.tourDrawingFrame;
 
 public class TspEnvironment
 {

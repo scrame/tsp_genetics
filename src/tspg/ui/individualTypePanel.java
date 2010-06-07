@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        TSP Genetics
 //Version:
@@ -23,6 +25,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspOrganism;
+import tspg.core.TspTour;
+import tspg.operators.binary.BinaryOperator;
+import tspg.operators.binary.BinaryTypes;
+import tspg.operators.unary.UnaryOperator;
+import tspg.operators.unary.UnaryTypes;
 
 public class individualTypePanel extends JPanel implements ActionListener {
 //constant to set the text field for the number of each template to

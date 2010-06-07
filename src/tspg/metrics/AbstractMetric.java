@@ -1,3 +1,5 @@
+package tspg.metrics;
+
 
 //Title:        Your Product Name
 //Version:      
@@ -18,6 +20,8 @@ These are the mathematical propeties of a metric, and if this is not a metric,
 Then the results of the program are meaningless.
 */
 import java.io.Serializable;
+
+import tspg.core.TspCity;
 abstract public class AbstractMetric implements Serializable
 {
 //The name of the metric

@@ -1,3 +1,5 @@
+package tspg.operators.binary;
+
 
 //Title:        Your Product Name
 //Version:
@@ -15,6 +17,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class binaryOrderCrossover extends BinaryOperator
 {
 //temporary data used to construct a new tour

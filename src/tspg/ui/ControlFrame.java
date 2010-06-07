@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        TSP Genetics
 //Version:      
@@ -20,6 +22,9 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspEnvironment;
 
 public class ControlFrame extends JFrame implements ActionListener
 {

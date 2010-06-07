@@ -1,3 +1,5 @@
+package tspg.operators.binary;
+
 
 //Title:        Your Product Name
 //Version:
@@ -13,6 +15,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class binaryIdentity extends BinaryOperator
 {
 

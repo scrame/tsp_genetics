@@ -1,3 +1,8 @@
+package tspg.core;
+
+import tspg.operators.binary.binaryIdentity;
+import tspg.operators.unary.unaryIdentity;
+
 
 //Title:        Your Product Name
 //Version:

@@ -1,3 +1,5 @@
+package tspg.ui;
+
 
 //Title:        Your Product Name
 //Version:
@@ -17,6 +19,9 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+
+import tspg.core.SystemSettings;
+import tspg.core.TspTour;
 
 public class tourDrawingPanel extends JPanel
 {

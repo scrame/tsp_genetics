@@ -1,3 +1,7 @@
+package tspg.operators.binary;
+
+import tspg.core.TspTour;
+
 //Title:        TSP Genetics
 //Version:
 //Copyright:    Copyright (c) 1999

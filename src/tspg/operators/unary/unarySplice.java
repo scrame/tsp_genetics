@@ -1,3 +1,5 @@
+package tspg.operators.unary;
+
 /** First implementation of a UnaryOperator. This operator
     picks two point and removes that subtour and appends it to the
     end. For example, if A,B, and C are subtours of ABC,
@@ -9,6 +11,8 @@
 
 
 import java.awt.Color;
+
+import tspg.core.TspTour;
 public class unarySplice extends UnaryOperator
 {
 
