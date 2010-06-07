@@ -11,8 +11,12 @@
         rendering of a single tour, which is then shuffled to create an animation
 
 */
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
 
 public class tourDrawingPanel extends JPanel
 {

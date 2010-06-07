@@ -39,7 +39,6 @@
 */
 
 
-import java.lang.Math;
 public class TspTour {
 
 //Constant to determine the number of swaps when randomizing tour

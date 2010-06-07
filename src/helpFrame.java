@@ -11,12 +11,15 @@
 
 */
 
-import java.awt.event.*;
-import javax.swing.event.*;
-import java.awt.*;
-import javax.swing.*;
-import java.net.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 public class helpFrame extends JFrame
 {     

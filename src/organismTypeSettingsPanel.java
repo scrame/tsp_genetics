@@ -6,12 +6,14 @@
 //Company:      illogiKal integrity
 //Description:  Your description
 
-package tspgenetics;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
-import javax.swing.event.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class organismTypeSettingsPanel extends JPanel implements ActionListener
 {
