@@ -27,7 +27,7 @@ public class unaryRandomSplice extends UnaryOperator
     {
         int swapTemp = endPoint;
         endPoint = startPoint;
-        startPoint = endPoint;
+        startPoint = swapTemp;
     }
 //create a new tour with as described above
     TspTour newTour = oldTour.getSubTour(startPoint, endPoint).annexTour(oldTour.getSubTour(0,startPoint).annexTour(oldTour.getSubTour(endPoint,oldTour.getTourSize())));

@@ -36,7 +36,7 @@ public class unaryRandomInversion extends UnaryOperator
     {
         int swapTemp = endPoint;
         endPoint = startPoint;
-        startPoint = endPoint;
+        startPoint = swapTemp;
     }
 //construct new tour from the using the process described above
     TspTour newTour = oldTour.getSubTour(0, startPoint).annexTour(oldTour.getSubTour(endPoint,startPoint).annexTour(oldTour.getSubTour(endPoint,oldTour.getTourSize())));

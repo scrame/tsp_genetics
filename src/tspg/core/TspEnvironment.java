@@ -75,7 +75,7 @@ public class TspEnvironment
 //the frame to animate the best tour progression
   private   tourDrawingFrame tdFrame;
 //the frame that draws the comparison of lengths by generations
-  private   fitnessDrawingFrame fdFrame;
+  static fitnessDrawingFrame fdFrame;
 //the innerclass that does the actual computations and represents it with a
 //progress bar
   private   progressFrame pFrame;
@@ -139,9 +139,8 @@ public class TspEnvironment
 */
   private void evaluateOrganisms()
   {
-//for adding to the list
-    TspTour bestTour;
-//to compare with the best length so far
+
+	  //to compare with the best length so far
     double tourLength;
 //initialize the average fitness
     averageFitness = 0;
@@ -195,9 +194,8 @@ public class TspEnvironment
   {
 //tours to work with
     TspTour bestTour,workingTour;
-//to determine which tour to return
-    double bestLength;
-//loop through every individual
+
+   //loop through every individual
     for(int i=0;i<nOrganisms;i++)
     {
 //initialize all of the data to the current tour
@@ -224,11 +222,7 @@ public class TspEnvironment
         environmentalOrganisms[i] = new TspOrganism(bestTour,environmentalOrganisms[i].getUnary(),environmentalOrganisms[i].getBinary());
     }
   }
-//access fucntion to return the best length found so far
-  private double getBestLength()
-  {
-     return SystemSettings.getMap().calculateTour(bestTours[getBestTourIndex()]);
-  }
+
 //the other main phase of the simulation, this is where the evaluated organisms
 //are separated and bred
   private void breedOrganisms()
@@ -300,11 +294,6 @@ public class TspEnvironment
     }
 //assign the next generation as the newly constructed set
     environmentalOrganisms = childSet;
-  }
-//access function to return the best tour so far
-  private TspTour getBestTour()
-  {
-    return bestTours[getBestTourIndex()];
   }
 //access funtion that returns a referenced best tour
   private TspTour getBestTour(int index)
@@ -484,7 +473,7 @@ class progressFrame extends JFrame implements ActionListener
             tdFrame = new tourDrawingFrame(getBestTourIndex(), bestTours);
             tdFrame.run();
 //create a frame that shows a graph of improvement
-            fdFrame = new fitnessDrawingFrame(generationIndex,averageFitnessArray,bestFitnessArray);
+            TspEnvironment.fdFrame = new fitnessDrawingFrame(generationIndex,averageFitnessArray,bestFitnessArray);
 //thats it! ready for another go!
         }
     }
