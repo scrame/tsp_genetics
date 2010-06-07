@@ -7,10 +7,10 @@ package tspg.operators.binary;
 //Company:      illogiKal integrity
 //Description:  Your description
 /** binaryCycleCrossOver
-    breeding algorithm that takes two tours and makes a child by creating precedence
+    breeding algorithm that takes two tours and makes a child by creating Precedence
     matrices and performing a logical union on the two, although this is technically
     more diffficult than some of the other binary operators, the majority of the work
-    is done in the precedenceMatrix class, this simply calls and returns the union
+    is done in the PrecedenceMatrix class, this simply calls and returns the union
     of the two...
 
 */
@@ -27,9 +27,9 @@ public class binaryMatrixXOR extends BinaryOperator
 //overloaded method to do the actual computation
   public TspTour modifyTour(TspTour oldTour, TspTour otherTour)
   {
-//create precedence matrices of both parents
-        precedenceMatrix tourOne = new precedenceMatrix(oldTour);
-        precedenceMatrix tourTwo = new precedenceMatrix(otherTour);
+//create Precedence matrices of both parents
+        PrecedenceMatrix tourOne = new PrecedenceMatrix(oldTour);
+        PrecedenceMatrix tourTwo = new PrecedenceMatrix(otherTour);
 //return the union of the two
         return tourOne.matrixXOR(tourTwo).getTour();
   }

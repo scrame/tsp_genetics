@@ -10,7 +10,7 @@ import tspg.core.TspTour;
 //Description:  Project for my senior project: TSP Genetics
 //
 /**
-                precedenceMatrix -- a class used with two of the binary algorithms:
+                PrecedenceMatrix -- a class used with two of the binary algorithms:
                 binaryUnion and binaryIdentity creates a predecessor matrix of a
                 TspTour. A predecessor matrix is constructed by setting up a
                 boolean matrix, a true is placed in spot x,y iff y comes after x
@@ -23,14 +23,14 @@ import tspg.core.TspTour;
                 using these constraints it is possible to make a set closure algorithm
                 that makes a valid tour out of an underconstrained matrix
 */
-public class precedenceMatrix
+public class PrecedenceMatrix
 {
 //data for the matrix
    boolean matrixData[][];
 //the length and width of the matrix (it is always square)
    int matrixSize;
 //constructor: takes a tour and generates a matrix from it
- public precedenceMatrix(TspTour workingTour)
+ public PrecedenceMatrix(TspTour workingTour)
  {
 //initialize the matrix to the proper size
         matrixSize = workingTour.getTourSize();
@@ -52,7 +52,7 @@ public class precedenceMatrix
         }
  }
 //constructor that simply sets the data
- public precedenceMatrix(int tourSize, boolean tourData[][])
+ public PrecedenceMatrix(int tourSize, boolean tourData[][])
  {
        matrixData = tourData;
        matrixSize = tourSize;
@@ -148,8 +148,8 @@ public class precedenceMatrix
  {
        return matrixData[row][col];
  }
- //returns an underconstrained union of two precedence matrices, getTour shapes it up
- public precedenceMatrix matrixUnion(precedenceMatrix orMatrix)
+ //returns an underconstrained union of two Precedence matrices, getTour shapes it up
+ public PrecedenceMatrix matrixUnion(PrecedenceMatrix orMatrix)
  {
        boolean targetMatrix[][] = new boolean[matrixSize][matrixSize];
        for(int i=0;i<matrixSize;i++)
@@ -160,11 +160,11 @@ public class precedenceMatrix
                 targetMatrix[i][j] = (matrixData[i][j] || orMatrix.getData(i,j));
            }
        }
-       return new precedenceMatrix(matrixSize, targetMatrix);
+       return new PrecedenceMatrix(matrixSize, targetMatrix);
 
  }
- //returnrs an underconstrained intersection of two precedence matrices
- public precedenceMatrix matrixIntersection(precedenceMatrix andMatrix)
+ //returnrs an underconstrained intersection of two Precedence matrices
+ public PrecedenceMatrix matrixIntersection(PrecedenceMatrix andMatrix)
  {
        boolean targetMatrix[][] = new boolean[matrixSize][matrixSize];
        for(int i=0;i<matrixSize;i++)
@@ -175,10 +175,10 @@ public class precedenceMatrix
                 targetMatrix[i][j] = (matrixData[i][j] && andMatrix.getData(i,j));
            }
        }
-       return new precedenceMatrix(matrixSize, targetMatrix);
+       return new PrecedenceMatrix(matrixSize, targetMatrix);
  }
- //returnrs an underconstrained intersection of two precedence matrices
- public precedenceMatrix matrixXOR(precedenceMatrix xorMatrix)
+ //returnrs an underconstrained intersection of two Precedence matrices
+ public PrecedenceMatrix matrixXOR(PrecedenceMatrix xorMatrix)
  {
        boolean targetMatrix[][] = new boolean[matrixSize][matrixSize];
        for(int i=0;i<matrixSize;i++)
@@ -189,6 +189,6 @@ public class precedenceMatrix
                 targetMatrix[i][j] = (matrixData[i][j] & xorMatrix.getData(i,j));
            }
        }
-       return new precedenceMatrix(matrixSize, targetMatrix);
+       return new PrecedenceMatrix(matrixSize, targetMatrix);
  }
 }
